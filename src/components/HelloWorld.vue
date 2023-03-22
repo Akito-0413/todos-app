@@ -9,7 +9,18 @@
     <p>締切</p>
     <input v-model="todo.deadline" />
     <br /><br />
-    <button style="submit" v-on:click="create">作成</button>
+    <button
+      style="submit"
+      v-on:click="create"
+      v-if="
+        (disabled =
+          todo.name.length != 0 &&
+          todo.task.length != 0 &&
+          todo.deadline.length != 0)
+      "
+    >
+      作成
+    </button>
     <hr />
     <button style="submit" v-on:click="show">過去のタスク一覧</button>
     <div v-for="todo in todos" v-bind:key="todo.name">
